@@ -101,8 +101,8 @@ $(function() {
         });
 
         it("contain atleast an entry in the feed container", function() {
-            const feed = document.getElementsByClassName("feed")[0];
-            const entry = feed.querySelector(".entry").length
+            const feed = document.querySelector(".feed");
+            const entry = feed.getElementsByClassName("entry").length
             /* expect(feed.classList.contains('entry')).toBe(true); */
             // checks if the feed has content/children
             expect(entry).not.toBe(0)
