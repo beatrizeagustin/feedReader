@@ -102,9 +102,10 @@ $(function() {
 
         it("contain atleast an entry in the feed container", function() {
             const feed = document.getElementsByClassName("feed")[0];
+            const entry = feed.querySelector(".entry").length
             /* expect(feed.classList.contains('entry')).toBe(true); */
             // checks if the feed has content/children
-            expect(feed.children.length > 0).toBe(true)
+            expect(entry).not.toBe(0)
         });
     });
     /*  TODO: Write a new test suite named "New Feed Selection" */
@@ -125,24 +126,24 @@ $(function() {
                loadFeed(0);
                // pushes content from first feed to feed1
                Array.from(feed.children).forEach(entry => {
-                   feed1.push(entry.innerText);
+                   feed1.push(entry.innerHTML);
                })
                // loads second feed
                loadFeed(1, done);
                // pushes content from second feed to feed2
               Array.from(feed.children).forEach(entry => {
-                   feed2.push(entry.innerText);
+                   feed2.push(entry.innerHTML);
                })
            })
            
            it("has loaded new feed", function() {
                // loops through original feed to check if contents equals to the feed1's index
                Array.from(feed.children).forEach((entry, index) => {
-                  expect(entry.innerText === feed1[index]).toBe(false) 
+                  expect(entry.innerHTML === feed1[index]).toBe(false) 
                });
                // loops through original feed to check if contents equals to the feed2's index
                Array.from(feed.children).forEach((entry, index) => {
-                  expect(entry.innerText === feed2[index]).toBe(false) 
+                  expect(entry.innerHTML === feed2[index]).toBe(false) 
                });
            });
        });
