@@ -119,22 +119,31 @@ $(function() {
          // https://matthewcranford.com/feed-reader-walkthrough-part-4-async-tests/
            const feed = document.getElementsByClassName("feed")[0]; 
            const feed1 = [];
-           const feed2 = [];
+         // const feed2 = [];
         
            beforeEach(function(done) {
                // loads first feed
-               loadFeed(0);
+               loadFeed(0, function() {
+                 //  Array.from(feed.children).forEach(entry => {
+                //   feed1.push(entry.innerHTML);
+                   feed.innerText
+                      loadFeed(1, function() {
+                           feed1.innerText
+                            done();
+                    });
+                });
+            }); 
                // pushes content from first feed to feed1
-               Array.from(feed.children).forEach(entry => {
+           /*    Array.from(feed.children).forEach(entry => {
                    feed1.push(entry.innerHTML);
-               })
+               }) 
                // loads second feed
                loadFeed(1, done);
                // pushes content from second feed to feed2
               Array.from(feed.children).forEach(entry => {
                    feed2.push(entry.innerHTML);
-               })
-           })
+               }) */
+            
            
            it("has loaded new feed", function() {
                // loops through original feed to check if contents equals to the feed1's index
@@ -142,9 +151,9 @@ $(function() {
                   expect(entry.innerHTML === feed1[index]).toBe(false) 
                });
                // loops through original feed to check if contents equals to the feed2's index
-               Array.from(feed.children).forEach((entry, index) => {
-                  expect(entry.innerHTML === feed2[index]).toBe(false) 
-               });
+         //      Array.from(feed.children).forEach((entry, index) => {
+         //         expect(entry.innerHTML === feed2[index]).toBe(false) 
+         //      });
            });
        });
 }());
